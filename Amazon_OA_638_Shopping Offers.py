@@ -75,4 +75,13 @@ class Solution(object):
             
         
         
+
+
+if __name__ == '__main__':
+    solu = Solution()
+    price, special, needs = [2, 3, 4], [[1, 1, 0, 4], [2, 2, 1, 9]], [1, 2, 1]
+    print(solu.shoppingOffers(price, special, needs))
+            
+        
+        
         
