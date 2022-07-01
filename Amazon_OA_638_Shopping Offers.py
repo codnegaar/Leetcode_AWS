@@ -50,4 +50,29 @@ class Solution:
                 if min(remain) >= 0:
                     result = min(result , s[-1] + self.shoppingOffers(price, special, remain))
         return result
+
+
+#  second solution:
+
+class Solution(object):
+    def shoppingOffers(self, price, special, needs):
+        """
+        :type price: List[int]
+        :type special: List[List[int]]
+        :type needs: List[int]
+        :rtype: int
+        """
+        dp = {} # Initialization, dp, is used to save the optimal solution for each state
+        def dfs(cur):
+            val = sum(cur[i] * price[i] for i in range(len(needs))) # Price without gift pack
+            for s in special:
+                tmp = [cur[j] - s[j] for j in range(len(needs))]
+                if min(tmp) >= 0: # Filter out, there are more products in the gift bag than the demand, gift bag, this step is also equivalent to pruning
+                    val  = min(val, dp.get(tuple(tmp), dfs(tmp)) + s[-1])  # Loop -- recursion -- get the optimal solution
+            dp[tuple(cur)] = val
+            return val
+        return dfs(needs)
+            
+        
+        
         
