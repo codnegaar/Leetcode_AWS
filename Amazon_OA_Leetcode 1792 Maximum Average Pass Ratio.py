@@ -23,3 +23,32 @@ Example 2:
 
 '''
 
+class Solution:
+    def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
+        
+        # initiate the priority queue to maintain the increase in ratio by push and pop
+        maxHeap = []
+        
+        '''
+        To create a heap, use a list initialized to [], or you can transform a 
+        populated list into a heap via function heapify().        
+        heapq.heapify(x) : Transform list x into a heap, in-place, in linear time.
+        
+        '''
+              
+        # classes[i] = [passi, totali]
+        for p, t in classes:
+            heapq.heappush(maxHeap, (p/t -(p + 1)/(t+1), p, t))
+        
+        while extraStudents > 0:
+            _, p, t = heapq.heappop(maxHeap)
+            p +=1
+            t += 1
+            heapq.heappush(maxHeap, (p/t -(p + 1)/(t+1), p, t))
+            
+            extraStudents -= 1
+        n = len(classes)
+    
+        return sum([p/t for _, p, t in maxHeap]) / n
+            
+        
