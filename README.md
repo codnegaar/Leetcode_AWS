@@ -1,4 +1,4 @@
-# Amazon -OA
+# AWS-OA
 
 •	Robot Bounded in Box
 •	Number Game
