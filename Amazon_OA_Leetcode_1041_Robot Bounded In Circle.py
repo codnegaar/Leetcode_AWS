@@ -1,4 +1,5 @@
 '''
+Leetcode 1o41
 On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:
 
 The north direction is the positive direction of the y-axis.
@@ -55,6 +56,33 @@ class Solution:
          such that the robot never leaves the circle.
         '''         
         return (x,y) == (0, 0) or (dirX, dirY) != (0, 1)
+       
+       
+       
+       
+ # Solution II
+   
+class Solution:
+  def isRobotBounded(self, instructions: str) -> bool:
+    x = 0
+    y = 0
+    d = 0
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
+    for instruction in instructions:
+     
+      if instruction == 'G':
+        x += directions[d][0]
+        y += directions[d][1]
+        
+      elif instruction == 'L':
+        d = (d + 3) % 4
+        
+      else:
+        d = (d + 1) % 4
+        
+    return (x, y) == (0, 0) or d > 0    
+       
                 
         
         
