@@ -52,3 +52,21 @@ class Solution(object):
             else:
                 hash[remainder] = 1
         return pairs
+       
+       
+# Solution II
+
+class Solution:
+    def numPairsDivisibleBy60(self, time: List[int]) -> int:
+        
+        pairs = 0
+        current = [0] * 60
+        
+        for t in time:
+            t %= 60
+            pairs += current[(60-t) % 60]
+            current[t] += 1
+        return pairs
+       
+       
+       
