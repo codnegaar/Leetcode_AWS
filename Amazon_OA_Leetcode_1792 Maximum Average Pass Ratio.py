@@ -11,6 +11,7 @@ class that will pass the exam divided by the total number of students of the cla
 all the classes divided by the number of the classes. Return the maximum possible average pass ratio after assigning the extraStudents
 students. Answers within 10-5 of the actual answer will be accepted.
 
+
 Example 1:
           Input: classes = [[1,2],[3,5],[2,2]], extraStudents = 2
           Output: 0.78333
